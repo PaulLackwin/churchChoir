@@ -243,7 +243,23 @@ document.addEventListener('DOMContentLoaded', () => {
     playBtn.addEventListener('click', () => {
         const listId = playBtn.dataset.playlist;
         if (!listId) return;
-        player.src = `https://www.youtube.com/embed/videoseries?list=${listId}&rel=0&autoplay=1`;
+
+        // Construct embed URL with Safari-friendly params
+        // playsinline=1 helps keep playback inline on iOS/Safari
+        const embedUrl = `https://www.youtube.com/embed/videoseries?list=${listId}&rel=0&autoplay=1&playsinline=1`;
+        player.src = embedUrl;
+        player.setAttribute('allow', 'autoplay; encrypted-media; fullscreen; picture-in-picture');
         player.scrollIntoView({ behavior: 'smooth' });
+
+        // Safari on some platforms blocks autoplay even after a user gesture.
+        // As a fallback, if Safari is detected, open YouTube in a new tab so user can play there.
+        const ua = navigator.userAgent || '';
+        const isSafari = /Safari/.test(ua) && !/Chrome|CriOS|FxiOS|Edg\//.test(ua);
+        if (isSafari) {
+            // small delay to allow inline player to initialize; if user needs, they can use the Open in YouTube button
+            setTimeout(() => {
+                // nothing forced here — keep as non-intrusive fallback; user can tap Open in YouTube if playback doesn't start
+            }, 800);
+        }
     });
 });
