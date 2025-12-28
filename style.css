@@ -350,3 +350,74 @@ body {
     #songTitle { font-size: 18px; margin: 8px 0 6px 0; }
     #songLyrics { font-size: 16px; }
 }
+
+/* Mobile playlist specifics */
+@media (max-width: 520px) {
+    /* make heading prominent on small screens */
+    .container > h1 {
+        font-size: 20px;
+        line-height: 1.12;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+
+    .subtitle { text-align: center; font-size: 14px; margin-bottom: 10px; }
+
+    /* big tap target for Play */
+    .play-large {
+        display: block;
+        width: 100%;
+        padding: 16px 14px;
+        font-size: 18px;
+        border-radius: 12px;
+        text-align: center;
+    }
+
+    /* taller, mobile-friendly player */
+    #playerWrap iframe {
+        width: 100%;
+        height: 60vh;
+        border-radius: 12px;
+        background: #000;
+    }
+
+    .container { padding: 18px 12px; }
+}
+
+/* Stack action buttons vertically on smaller screens */
+@media (max-width: 640px) {
+    .container .btn {
+        display: block;
+        width: 100%;
+        max-width: 100%;
+        margin: 10px 0;
+    }
+    .container .btn + .btn {
+        margin-top: 8px;
+    }
+}
+
+/* Playlist player styles */
+#playerWrap iframe {
+    width: 100%;
+    height: 56vh;
+    max-height: 580px;
+    border: none;
+    background: #000;
+}
+
+.playlist-controls input::placeholder { color: rgba(255,255,255,0.5); }
+.playlist-item {
+    padding: 12px 14px;
+    margin: 8px 0;
+    border-radius: 10px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    display:flex;align-items:center;justify-content:space-between;gap:8px;
+}
+.playlist-item button {
+    background: rgba(255,255,255,0.06);
+    color: #fff;
+    border: none;
+    padding: 8px 10px;
+    border-radius: 8px;
+}

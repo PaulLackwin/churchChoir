@@ -91,22 +91,22 @@ const songs = {
 பெரியவர், பரிசுத்தர் கிருபைகள் நிறைந்தவர்
 உண்மையுள்ளவர்
 
-கடந்த ஆண்டு முழுவதும் நம்மை
+1. கடந்த ஆண்டு முழுவதும் நம்மை
 கரத்தைப் பிடித்து நடத்தினாரே
 தகப்பன் பிள்ளையை சுமப்பது போல
 தோளில் சுமந்து நடத்தினாரே
 
-வியாதி படுக்கை மரண நேரம்
+2. வியாதி படுக்கை மரண நேரம்
 பெலனற்ற வேளையில் தாங்கினாரே
 விடுதலை தந்தார் பெலனும் ஈந்தார்
 சாட்சியாய் நம்மை நிறுத்தினாரே
 
-சோதனை நம்மை சூழ்ந்திட்ட நேரம்
+3. சோதனை நம்மை சூழ்ந்திட்ட நேரம்
 வலக்கரத்தால் நம்மை தேற்றினாரே
 வார்த்தையை அனுப்பி நம்மோடு பேசி
 தைரியப்படுத்தி நடத்தினாரே
 
-கண்ணீர் கவலையாவையும் போக்க
+4. கண்ணீர் கவலையாவையும் போக்க
 கர்த்தர் இயேசு வருகின்றாரே
 கலங்கிட வேண்டாம் பயப்பட வேண்டாம்
 அவரோடு நாமும் பறந்து செல்வோம்`
@@ -142,17 +142,17 @@ const songs = {
 புது கிருபை தாரும் தேவா
 புது பெலனை தாரும் தேவா
 
-ஆரம்பம் அற்பமானாலும்
+1. ஆரம்பம் அற்பமானாலும்
 முடிவு சம்பூர்ணமாம்
 குறைவுகள் நிறைவாகட்டும் – எல்லாம்
 வறட்சி செழிப்பாகட்டும் – என்
 
-வெட்கத்திற்கு பதிலாக
+2. வெட்கத்திற்கு பதிலாக
 (இரட்டிப்பு) நன்மை தாரும் தேவா
 கண்ணீருக்குப் பதிலாக – எந்தன்
 களிப்பைத் தாரும் தேவா – ஆனந்த
 
-சவால்கள் சந்தித்திட
+3. சவால்கள் சந்தித்திட
 (இன்று) உலகத்தில் ஜெயமெடுக்க
 உறவுகள் சீர்பொருந்த – குடும்ப
 சமாதானம் நான் பெற்றிட – மனதில்`
@@ -223,4 +223,27 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+});
+
+/* =========================
+   PLAYLIST PAGE BEHAVIOR
+   - Accept YouTube playlist or video URLs
+   - Add to list, click to play in iframe, or load entire playlist
+========================= */
+document.addEventListener('DOMContentLoaded', () => {
+    // legacy playlist controls removed in simplified UI
+});
+
+// Simple Play button handler for the default playlist (when page uses single Play button)
+document.addEventListener('DOMContentLoaded', () => {
+    const playBtn = document.getElementById('playBtn');
+    const player = document.getElementById('ytPlayer');
+    if (!playBtn || !player) return;
+
+    playBtn.addEventListener('click', () => {
+        const listId = playBtn.dataset.playlist;
+        if (!listId) return;
+        player.src = `https://www.youtube.com/embed/videoseries?list=${listId}&rel=0&autoplay=1`;
+        player.scrollIntoView({ behavior: 'smooth' });
+    });
 });
