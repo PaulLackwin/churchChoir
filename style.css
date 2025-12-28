@@ -1,0 +1,282 @@
+/* =========================
+   GLOBAL
+========================= */
+* {
+    box-sizing: border-box;
+}
+
+
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI',
+                 Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: linear-gradient(180deg, #1e3c72 0%, #2a5298 60%, #173e6b 100%);
+    color: #ffffff;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* =========================
+   BACKGROUND ANIMATION
+========================= */
+.bg-animations::before,
+.bg-animations::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image:
+        radial-gradient(circle, rgba(255,255,255,0.18) 2px, transparent 2px),
+        radial-gradient(circle, rgba(255,255,255,0.12) 1.5px, transparent 2px);
+    background-size: 60px 60px, 120px 120px;
+    animation: floatLights 45s linear infinite;
+    z-index: -1;
+}
+
+@keyframes floatLights {
+    from { background-position: 0 0; }
+    to   { background-position: 1000px 1000px; }
+}
+
+/* =========================
+   LAYOUT
+========================= */
+.container {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 56px 24px;
+}
+
+.center {
+    text-align: center;
+}
+
+/* =========================
+   TITLE & TEXT
+========================= */
+.title {
+    margin: 0 0 14px 0;
+    font-size: 34px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    text-shadow: 0 2px 0 rgba(0,0,0,0.15);
+    animation: slideDown 1s ease;
+}
+
+.title span {
+    display: block;
+    font-size: 22px;
+    font-weight: 400;
+    margin-top: 8px;
+    opacity: 0.95;
+}
+
+.subtitle {
+    font-size: 16px;
+    opacity: 0.85;
+    margin-bottom: 22px;
+}
+
+/* =========================
+   COUNTDOWN
+========================= */
+.countdown {
+    font-size: 30px;
+    margin: 18px 0 8px 0;
+    font-weight: 700;
+    color: #f0f7ff;
+    animation: glow 2s infinite alternate;
+}
+
+.countdown-meaning {
+    font-size: 15px;
+    opacity: 0.9;
+    margin-bottom: 32px;
+}
+
+/* =========================
+   VERSE
+========================= */
+.verse {
+    background: rgba(255,255,255,0.12);
+    padding: 26px 30px;
+    border-radius: 14px;
+    margin: 28px auto;
+    max-width: 760px;
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.04),
+        0 6px 18px rgba(0,0,0,0.25);
+}
+
+.verse p {
+    margin: 0;
+    font-size: 18px;
+    line-height: 1.6;
+    color: rgba(240,247,255,0.95);
+}
+
+.verse strong {
+    display: block;
+    margin-top: 10px;
+    font-weight: 700;
+}
+
+.fade-in {
+    animation: fadeUp 1.5s ease;
+}
+
+/* =========================
+   BUTTON
+========================= */
+.btn {
+    display: inline-block;
+    padding: 12px 28px;
+    background: linear-gradient(180deg, #ffd24d, #ffb900);
+    color: #111;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 700;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+    transition: transform 0.16s ease, box-shadow 0.16s ease;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.32);
+}
+
+.pulse {
+    animation: pulse 2.2s infinite;
+}
+
+/* =========================
+   ANIMATIONS
+========================= */
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-35px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes glow {
+    from { text-shadow: 0 0 10px rgba(255,255,255,0.4); }
+    to   { text-shadow: 0 0 26px rgba(255,255,255,0.9); }
+}
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+    0%   { transform: scale(1); }
+    50%  { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 520px) {
+    .title { font-size: 24px; }
+    .title span { font-size: 18px; }
+    .countdown { font-size: 22px; }
+    .verse p { font-size: 16px; }
+    .container { padding: 32px 16px; }
+}
+
+/* =========================
+   SONG LIST INTERACTIONS
+========================= */
+.song-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 18px 0;
+}
+
+.song-list li {
+    background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+    margin: 10px 0;
+    padding: 14px 16px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: transform 180ms cubic-bezier(.2,.9,.2,1),
+                box-shadow 180ms ease,
+                background-color 180ms ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+}
+
+.song-list li:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.28);
+    background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+}
+
+.song-list li.clicked,
+.song-list li:active {
+    animation: tap 220ms ease forwards;
+}
+
+@keyframes tap {
+    0% { transform: translateY(0) scale(1); box-shadow: 0 8px 18px rgba(0,0,0,0.18); }
+    40% { transform: translateY(-4px) scale(0.995); box-shadow: 0 14px 30px rgba(0,0,0,0.28); }
+    100% { transform: translateY(0) scale(0.998); box-shadow: 0 8px 18px rgba(0,0,0,0.18); }
+}
+
+/* =========================
+   MODAL (SONG LYRICS)
+========================= */
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.65);
+    z-index: 1200;
+    -webkit-overflow-scrolling: touch;
+}
+
+.modal.open {
+    display: block;
+}
+
+.modal-content {
+    background: #ffffff;
+    color: #111111;
+    width: 92%;
+    max-width: 760px;
+    margin: 6vh auto;
+    padding: 18px;
+    border-radius: 12px;
+    max-height: 82vh;
+    overflow-y: auto;
+    box-shadow: 0 18px 40px rgba(0,0,0,0.45);
+}
+
+.modal .close {
+    float: right;
+    font-size: 26px;
+    line-height: 1;
+    cursor: pointer;
+    color: #333;
+}
+
+.lyrics {
+    white-space: pre-line;
+    line-height: 1.7;
+    margin-top: 8px;
+}
+
+@media (max-width: 640px) {
+    .modal-content {
+        width: calc(100% - 16px);
+        margin: 4vh 8px;
+        height: 90vh;
+        max-height: 90vh;
+        border-radius: 10px;
+        padding: 16px;
+    }
+    .modal .close {
+        font-size: 22px;
+    }
+}

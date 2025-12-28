@@ -1,214 +1,43 @@
 <!DOCTYPE html>
-<html lang="ta">
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Animated Song Book</title>
-
-<style>
-    body {
-        margin: 0;
-        font-family: "Segoe UI", sans-serif;
-        background: linear-gradient(135deg, #2c3e50, #4ca1af);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 100vh;
-        color: #333;
-    }
-
-    .book {
-        width: 90%;
-        max-width: 800px;
-        background: #fff;
-        border-radius: 16px;
-        box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-        overflow: hidden;
-        animation: openBook 1s ease;
-    }
-
-    @keyframes openBook {
-        from {
-            transform: scale(0.9) rotateX(10deg);
-            opacity: 0;
-        }
-        to {
-            transform: scale(1) rotateX(0);
-            opacity: 1;
-        }
-    }
-
-    .header {
-        background: #1e3c72;
-        background: linear-gradient(to right, #1e3c72, #2a5298);
-        color: white;
-        padding: 20px;
-        text-align: center;
-    }
-
-    .header h1 {
-        margin: 0;
-        font-size: 26px;
-    }
-
-    .song {
-        padding: 25px;
-        border-bottom: 1px solid #eee;
-        animation: fadeInUp 0.8s ease;
-    }
-
-    @keyframes fadeInUp {
-        from {
-            transform: translateY(20px);
-            opacity: 0;
-        }
-        to {
-            transform: translateY(0);
-            opacity: 1;
-        }
-    }
-
-    .song h2 {
-        margin-top: 0;
-        color: #2a5298;
-    }
-
-    .lyrics {
-        white-space: pre-line;
-        line-height: 1.8;
-        font-size: 17px;
-        max-height: 260px;
-        overflow-y: auto;
-        padding-right: 10px;
-    }
-
-    .lyrics::-webkit-scrollbar {
-        width: 6px;
-    }
-
-    .lyrics::-webkit-scrollbar-thumb {
-        background: #2a5298;
-        border-radius: 10px;
-    }
-
-    footer {
-        text-align: center;
-        padding: 15px;
-        background: #f5f5f5;
-        font-size: 14px;
-        color: #666;
-    }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>New Year Praise</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
 </head>
-
 <body>
+<div class="bg-animations"></div>
 
-<div class="book">
-    <div class="header">
-        <h1>📖 Animated Song Book</h1>
-        <p>6 Songs Collection</p>
+<div class="container center">
+    <h1 class="title">
+        🎉 Happy New Year  🎉 <br>
+        <span>CSI Immanuel Church Choir</span>
+    </h1>
+
+    <p class="subtitle">
+        Counting every moment God has given us…
+    </p>
+
+    <div id="countdown" class="countdown">
+        Loading countdown...
     </div>
 
-    <!-- SONG 1 -->
-    <div class="song">
-        <h2>Song 1 – Title</h2>
-        <div class="lyrics">
-யேகோவா தேவனுக்கு ஆயிரம் நாமங்கள்
-எதைச் சொல்லி பாடிடுவேன்
-கர்த்தாதி கர்த்தர் செய்த நன்மைகள் ஆயிரம்
-கரம் தட்டி பாடிடுவேன் x 2
+    <p class="countdown-meaning">
+        Until we step into a <strong>New Year of praise, worship, and grace</strong>
+    </p>
 
-யெகோவா ஷாலோம் யெகோவா ஷம்மா
-யெகோவா ரூவா யெகோவா ரஃப்பா x 2
-
-யேகோவா தேவனுக்கு ஆயிரம் நாமங்கள்
-எதைச் சொல்லி பாடிடுவேன்
-கர்த்தாதி கர்த்தர் செய்த நன்மைகள் ஆயிரம்
-கரம் தட்டி பாடிடுவேன் x 2
-
-Verse 1
-
-எல்ரோயிக்கு அல்லேலூயா
-என்னை நீரே கண்டீரையா
-ஏக்கம் எல்லாம் தீர்த்தீரையா
-நான் தாகத்தோடு வந்தபோது
-ஜீவத்தண்ணீர் எனக்குத் தந்து
-தாகமெல்லாம் தீர்த்தீரையா x 2
-
-Verse 2
-
-எல்ஷடாயும் நீங்க தாங்க
-சர்வ வல்ல தேவனாக
-என்னை என்றும் நடத்துனீங்க
-எபிநேசரும் நீங்க தாங்க
-உதவி செய்யும் தேவனாக
-என்னை என்றும் தாங்குவீங்க x 2
-
-Verse 3
-
-ஏலோஹிமும் நீங்க தாங்க
-எங்கும் உள்ள தேவனாக
-எந்த நாளும் பாடுவேங்க
-இம்மானுவேல் நீங்கதாங்க
-மண்ணில் வந்த தேவன் நீங்க
-இன்றும் என்றும் பாடுவேங்க x 2
-
-யெகோவா ஷாலோம் யெகோவா ஷம்மா
-யெகோவா ரூவா யெகோவா ரஃப்பா x 2
-
-யேகோவா தேவனுக்கு ஆயிரம் நாமங்கள்
-எதைச் சொல்லி பாடிடுவேன்
-கர்த்தாதி கர்த்தர் செய்த நன்மைகள் ஆயிரம்
-கரம் தட்டி பாடிடுவேன் x 2
-
-யெகோவா ஷாலோம் யெகோவா ஷம்மா
-யெகோவா ரூவா யெகோவா ரஃப்பா x 2
-        </div>
+    <div class="verse fade-in">
+        <p>
+            “So that with one mind and one voice you may glorify  
+            the God and Father of our Lord Jesus Christ.”
+            <br><strong>– Romans 15:6</strong>
+        </p>
     </div>
 
-    <!-- SONG 2 -->
-    <div class="song">
-        <h2>Song 2 – Title</h2>
-        <div class="lyrics">
-[Paste Song 2 lyrics here]
-        </div>
-    </div>
-
-    <!-- SONG 3 -->
-    <div class="song">
-        <h2>Song 3 – Title</h2>
-        <div class="lyrics">
-[Paste Song 3 lyrics here]
-        </div>
-    </div>
-
-    <!-- SONG 4 -->
-    <div class="song">
-        <h2>Song 4 – Title</h2>
-        <div class="lyrics">
-[Paste Song 4 lyrics here]
-        </div>
-    </div>
-
-    <!-- SONG 5 -->
-    <div class="song">
-        <h2>Song 5 – Title</h2>
-        <div class="lyrics">
-[Paste Song 5 lyrics here]
-        </div>
-    </div>
-
-    <!-- SONG 6 -->
-    <div class="song">
-        <h2>Song 6 – Title</h2>
-        <div class="lyrics">
-[Paste Song 6 lyrics here]
-        </div>
-    </div>
-
-    <footer>
-        © Animated Song Book
-    </footer>
+    <a href="songs.html" class="btn pulse">
+        🎶 Praise & Worship Song Lyrics
+    </a>
 </div>
-
 </body>
-</html>
