@@ -234,6 +234,44 @@ document.addEventListener('DOMContentLoaded', () => {
     // legacy playlist controls removed in simplified UI
 });
 
+// Paste handlers for service page placeholders
+document.addEventListener('DOMContentLoaded', () => {
+    const pasteButtons = document.querySelectorAll('.paste-btn');
+    if (!pasteButtons || pasteButtons.length === 0) return;
+
+    pasteButtons.forEach(btn => {
+        btn.addEventListener('click', async (e) => {
+            const li = e.target.closest('.service-item');
+            if (!li) return;
+            const placeholder = li.querySelector('[data-placeholder]');
+            if (!placeholder) return;
+
+            // Try to read from clipboard first
+            let text = '';
+            try {
+                if (navigator.clipboard && navigator.clipboard.readText) {
+                    text = await navigator.clipboard.readText();
+                }
+            } catch (err) {
+                // ignore, fallback to prompt
+            }
+
+            if (!text) {
+                // fallback to prompt so user can paste
+                text = prompt('Paste the starting lyric line here:');
+            }
+
+            if (text !== null && text !== undefined) {
+                // set text into placeholder and prevent typing
+                placeholder.textContent = text.trim();
+                placeholder.setAttribute('data-filled', '1');
+                // optional: visually indicate filled
+                placeholder.style.borderStyle = 'solid';
+            }
+        });
+    });
+});
+
 // Simple Play button handler for the default playlist (when page uses single Play button)
 document.addEventListener('DOMContentLoaded', () => {
     const playBtn = document.getElementById('playBtn');
